@@ -57,3 +57,4 @@ end
     weapon_id: idweapon.id
   )
 end
+
