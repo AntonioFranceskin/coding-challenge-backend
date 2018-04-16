@@ -12,7 +12,7 @@ Armor.destroy_all
 
 50.times do
   Zombie.create!(
-    name: "#{Faker::Superhero.prefix} #{Faker::RickAndMorty.character}",
+    name: Faker::Superhero.prefix,
     hit_points: Faker::Number.between(1, 10),
     speed: Faker::Number.between(1, 10),
     brains_eaten: Faker::Number.between(1, 50),
@@ -22,7 +22,7 @@ end
 
 20.times do
   Weapon.create!(
-    name: "#{Faker::Hacker.adjective} #{Faker::Music.instrument}".capitalize,
+    name: Faker::Hacker.adjective,
     attack_points: Faker::Number.between(1, 10),
     durability: Faker::Number.between(1, 10),
     price: Faker::Number.between(1, 50)
@@ -33,9 +33,23 @@ ARMOR_SUFFIXES = %w(armor helmet shield).freeze
 
 20.times do
   Armor.create!(
-    name: "#{Faker::Food.ingredient} #{ARMOR_SUFFIXES.sample}".capitalize,
+    name: Faker::Food.ingredient,
     defense_points: Faker::Number.between(1, 10),
     durability: Faker::Number.between(1, 10),
     price: Faker::Number.between(1, 50)
+  )
+end
+
+50.times do
+  ZombieArmor.create!(
+    zombie_id: Faker::Number.between(1, 50),
+    armor_id: Faker::Number.between(1, 20)
+  )
+end
+
+50.times do
+  ZombieWeapon.create!(
+    zombie_id: Faker::Number.between(1, 50),
+    weapon_id: Faker::Number.between(1, 20)
   )
 end
