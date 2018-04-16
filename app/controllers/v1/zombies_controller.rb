@@ -33,6 +33,50 @@ module V1
       head 204
     end
 
+    def search  
+    @zombies = []  
+    if params[:key] != nil
+      case params[:key]
+      when "hit_points" then
+        zombies = Zombie.where("hit_points = ?",params[:value])
+      when "brains_eaten" then
+        zombies = Zombie.where("brains_eaten = ?",params[:value])
+      when "speed" then
+        zombies = Zombie.where("speed = ?",params[:value])
+      end
+    else 
+      zombies = Zombie.all
+    end 
+    puts "Zombies #{zombies.inspect}"
+    if params[:weaponid] != nil && params[:armorid] != nil
+        zombies.each do |zombie|
+          if zombie.armors.find_by(id: params[:armorid]) != nil && zombie.weapons.find_by(id: params[:weaponid]) != nil 
+            @zombies << zombie
+          end  
+        end  
+    end
+    if params[:weaponid] != nil && params[:armorid] == nil
+        zombies.each do |zombie|
+          if zombie.weapons.find_by(id: params[:weaponid]) != nil 
+            @zombies << zombie
+          end  
+        end 
+    end      
+    if params[:weaponid] == nil && params[:armorid] != nil
+        zombies.each do |zombie|
+          if zombie.armors.find_by(id: params[:armorid]) != nil 
+            @zombies << zombie
+          end  
+        end 
+    end
+    if params[:weaponid] == nil && params[:armorid] == nil
+        zombies.each do |zombie|
+            @zombies << zombie
+        end 
+    end
+    render json: @zombies, adapter: :json, status: 200
+    end
+
     private
 
     def set_zombie
