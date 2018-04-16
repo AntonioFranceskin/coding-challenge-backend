@@ -39,3 +39,22 @@ ARMOR_SUFFIXES = %w(armor helmet shield).freeze
     price: Faker::Number.between(1, 50)
   )
 end
+
+
+50.times do
+  idarmor = Armor.order("RAND()").first
+  idzombie = Zombie.order("RAND()").first
+  ZombieArmor.create!(
+    zombie_id: idzombie.id,
+    armor_id: idarmor.id
+  )
+end
+
+50.times do
+  idweapon = Weapon.order("RAND()").first
+  idzombie = Zombie.order("RAND()").first
+  ZombieWeapon.create!(
+    zombie_id: idzombie.id,
+    weapon_id: idweapon.id
+  )
+end
