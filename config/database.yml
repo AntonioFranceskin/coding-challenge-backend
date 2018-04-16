@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['API_DB_NAME'] %>
+  database: <%= ENV['DATABASE_URL'] %>
   username: <%= ENV['API_DB_USERNAME'] %>
   password: <%= ENV['API_DB_PASSWORD'] %>
