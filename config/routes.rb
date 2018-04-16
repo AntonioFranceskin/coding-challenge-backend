@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    scope module: :v1 do
+    resources :zombies, only: [:index, :create, :update, :destroy, :show]
+    resources :armors, only: [:index, :create, :update, :destroy, :show]
+    resources :weapons_copies, only: [:index, :create, :update, :destroy, :show]
+    get '/search', to: 'zombies#search'
+  end
+
 end
