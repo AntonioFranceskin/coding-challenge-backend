@@ -40,7 +40,7 @@ module V1
     end
 
     def zombie_params
-      params.require(:zombie).permit(:first_name, :last_name)
+      params.require(:zombie).permit(:name, :hit_points, :brains_eaten, :speed, :turn_date)
     end
   end
 end

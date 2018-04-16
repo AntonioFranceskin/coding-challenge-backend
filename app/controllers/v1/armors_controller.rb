@@ -3,8 +3,8 @@ module V1
     before_action :set_armor, only: [:show, :destroy, :update]
 
     def index
-      armors = Armor.preload(:books).paginate(page: params[:page])
-      render json: armors, meta: pagination(armors), adapter: :json
+      armors = Armor.all
+      render json: armors, adapter: :json
     end
 
     def show
@@ -40,7 +40,7 @@ module V1
     end
 
     def armor_params
-      params.require(:armor).permit(:first_name, :last_name)
+      params.require(:armor).permit(:name, :defense_points, :durability, :price)
     end
   end
 end

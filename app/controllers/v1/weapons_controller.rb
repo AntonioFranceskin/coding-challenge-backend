@@ -40,7 +40,7 @@ module V1
     end
 
     def weapon_params
-      params.require(:weapon).permit(:first_name, :last_name)
+      params.require(:weapon).permit(:name, :attack_points, :durability, :price)
     end
   end
 end
