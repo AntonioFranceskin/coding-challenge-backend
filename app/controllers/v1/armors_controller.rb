@@ -40,7 +40,7 @@ module V1
     end
 
     def armor_params
-      params.require(:armor).permit(:first_name, :last_name)
+      params.require(:armor).permit(:name, :defense_points, :durability, :price)
     end
   end
 end
