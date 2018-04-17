@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 Zombie.destroy_all
 Weapon.destroy_all
 Armor.destroy_all
@@ -58,3 +57,4 @@ end
     weapon_id: idweapon.id
   )
 end
+

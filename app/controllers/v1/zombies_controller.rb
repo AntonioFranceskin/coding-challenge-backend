@@ -8,7 +8,7 @@ module V1
     end
 
     def show
-      render json: @zombie, adapter: :json
+      render json: @zombie, adapter: :json, status: 201  
     end
 
     def create
